@@ -2,7 +2,7 @@ const dialogflow = require('@google-cloud/dialogflow');
 const fs = require('fs');
 const path = require('path');
 const { v4 } = require('uuid');
-
+require('dotenv').config();
 const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);
 
 const sessionClient = new dialogflow.SessionsClient({
@@ -36,6 +36,6 @@ async function detectIntent(queryText, language) {
   return result;
 }
 
-detectIntent('Como vai você?', 'pt-br')
+detectIntent('what is your name?', 'en-US')
   .then(result => console.log(result))
   .catch(err => console.error('ERROR:', err));
